@@ -1,0 +1,12 @@
+upload:
+    resource: "@UploadBundle/Resources/config/routing.yml"
+    prefix:   /
+
+image_post:
+    resource: "@ImageBundle/Controller/PostController.php"
+    type:     annotation
+
+image:
+    resource: "@ImageBundle/Resources/config/routing.yml"
+    prefix:   /
+

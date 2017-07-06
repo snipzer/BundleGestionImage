@@ -1,0 +1,16 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    upload.annotation_reader:
+        class: Grafikart\UploadBundle\Annotation\UploadAnnotationReader
+        arguments: ["@annotations.reader"]
+    upload.handler:
+        class: Grafikart\UploadBundle\Handler\UploadHandler
+    upload.subscriber:
+        class: Grafikart\UploadBundle\Listener\UploadSubscriber
+        arguments: ["@upload.annotation_reader", "@upload.handler"]
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
